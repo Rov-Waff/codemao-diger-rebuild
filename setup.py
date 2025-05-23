@@ -31,6 +31,7 @@ import subprocess
 import sys
 import glob
 import shutil
+from setuptools import setup
 
 from sys import version_info
 py3 = version_info[0] == 3
@@ -86,4 +87,9 @@ try:
     subprocess.check_call([sys.executable, "setup.py"] + setup_args, cwd=script_dir)
 except subprocess.CalledProcessError as e:
     exit_code = e.returncode
+setup(
+    name='codemao-diger',
+    packages=['codemao-diger'],
+    package_data={'':['__main__.py']},
+)
 sys.exit(exit_code)

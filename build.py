@@ -14,4 +14,8 @@ default_task = "publish"
 
 @init
 def set_properties(project):
-    pass
+    project.set_property("coverage_break_build", False)
+    project.name = "codemao-diger-rebuild"
+    project.version = "2.0.0"
+    project.url = "https://github.com/Rov-Waff/codemao-diger-rebuild"
+    project.license = "MIT License"
