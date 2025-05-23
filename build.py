@@ -19,3 +19,4 @@ def set_properties(project):
     project.version = "2.0.0"
     project.url = "https://github.com/Rov-Waff/codemao-diger-rebuild"
     project.license = "MIT License"
+    project.depends_on('requests>=2.32')
