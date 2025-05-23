@@ -6,14 +6,17 @@ class Requester:
     def __init__(self,url,db_path):
         self.url=url
         self.db_path=db_path
-        self.postMapper=PostMapper.PostMapper(self.db_path)
-        self.noExistMapper=NoExistPostsMapper.NoExistPostsMapper(self.db_path)
+        
+    def isPostExistOnlineById(self,id):
+        res=requests.get(self.url.format(id))
+        if res.status_code==200:
+            return True
+        else:
+            return False
         
     def requestById(self,id):
         res=requests.get(self.url.format(id))
-        if res.status_code==404:
-            return PostEntity('FAILURE',0,'','',0,'',0,'',0,0,0)
-        else:
+        if self.isPostExistOnlineById(id):
             res_content=json.loads(res.content)
             post_id=int(res_content['id'])
             title=res_content['title']
@@ -26,6 +29,9 @@ class Requester:
             n_replies=int(res_content['n_replies'])
             n_comments=int(res_content['n_comments'])
             return PostEntity('OK',post_id,title,content,user_id,user_nickname,board_id,board_name,n_views,n_replies,n_comments)
+        
+        else:
+            return PostEntity('FAILURE',0,'','',0,'',0,'',0,0,0)
         
 if __name__=='__main__':
     requester=Requester("https://api.codemao.cn/web/forums/posts/{}/details","db/data.db")
