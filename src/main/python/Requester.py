@@ -1,5 +1,6 @@
 import requests,json
 from codemao_diger.DBMapper import PostMapper,NoExistPostsMapper
+from codemao_diger.entity.PostEntity import PostEntity
 
 class Requester:
     def __init__(self,url,db_path):
@@ -11,7 +12,7 @@ class Requester:
     def requestById(self,id):
         res=requests.get(self.url.format(id))
         if res.status_code==404:
-            self.noExistMapper.addNoExist(id)
+            return PostEntity('FAILURE',0,'','',0,'',0,'',0,0,0)
         else:
             res_content=json.loads(res.content)
             post_id=int(res_content['id'])
@@ -24,10 +25,10 @@ class Requester:
             n_views=int(res_content['n_views'])
             n_replies=int(res_content['n_replies'])
             n_comments=int(res_content['n_comments'])
-            self.postMapper.addPost(post_id,title,content,user_id,user_nickname,board_id,board_name,n_views,n_replies,n_comments)
+            return PostEntity('OK',post_id,title,content,user_id,user_nickname,board_id,board_name,n_views,n_replies,n_comments)
         
 if __name__=='__main__':
     requester=Requester("https://api.codemao.cn/web/forums/posts/{}/details","db/data.db")
-    # requester.requestById(3)
-    requester.requestById(72)
+    print(requester.requestById(3))
+    print(requester.requestById(72))
     
