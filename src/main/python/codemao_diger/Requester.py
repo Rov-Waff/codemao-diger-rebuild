@@ -31,7 +31,7 @@ class Requester:
             return PostEntity('OK',post_id,title,content,user_id,user_nickname,board_id,board_name,n_views,n_replies,n_comments)
         
         else:
-            return PostEntity('FAILURE',0,'','',0,'',0,'',0,0,0)
+            return PostEntity('FAILURE',id,'','',0,'',0,'',0,0,0)
         
 if __name__=='__main__':
     requester=Requester("https://api.codemao.cn/web/forums/posts/{}/details","db/data.db")
