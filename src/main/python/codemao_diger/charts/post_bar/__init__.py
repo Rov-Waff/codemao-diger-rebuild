@@ -5,7 +5,7 @@ from collections import Counter
 from codemao_diger.charts.post_bar.UserEntity import UserEntity
 
 class PostBar(Bar):
-    def __init__(self,db_url,ranktop):
+    def __init__(self,db_url,ranktop,path):
         super().__init__()
         self.connection=sqlite3.connect(db_url)
         self.cursor=self.connection.cursor()
@@ -14,6 +14,7 @@ class PostBar(Bar):
         self.x_axis=[]
         self.y_axis=[]    
         self.ranktop=ranktop
+        self.path=path
     
     def genCount(self):
         res=self.postMapper.getAllUserID()
@@ -30,8 +31,8 @@ class PostBar(Bar):
         for i in sorted_userList:
             self.x_axis.append(i.username)
             self.y_axis.append(i.n_post)
-    def render(self, path = "render.html"):
+    def render(self):
         self.genCount()
         self.add_xaxis(self.x_axis[:self.ranktop])
         self.add_yaxis("发帖量",self.y_axis[:self.ranktop])
-        return super().render(path)
+        return super().render(self.path)
