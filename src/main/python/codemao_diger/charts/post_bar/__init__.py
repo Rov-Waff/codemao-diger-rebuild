@@ -31,6 +31,7 @@ class PostBar(Bar):
             self.x_axis.append(i.username)
             self.y_axis.append(i.n_post)
     def render(self, path = "render.html"):
+        self.genCount()
         self.add_xaxis(self.x_axis[:self.ranktop])
         self.add_yaxis("发帖量",self.y_axis[:self.ranktop])
         return super().render(path)
