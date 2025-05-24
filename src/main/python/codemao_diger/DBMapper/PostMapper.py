@@ -36,8 +36,8 @@ class PostMapper:
             return None
         else:
             return(res[0][0])
+        
+    def getAllBoardName(self):
+        self.cursor.execute("SELECT (board_name) from posts")
+        return self.cursor.fetchall()
 
-if __name__=="__main__":
-    postMapper = PostMapper("/home/seterain3913/文档/codemao-diger-rebuild/db/data.db")
-    print(postMapper.getAllUserID())
-    print(postMapper.getUsernameById(1))
