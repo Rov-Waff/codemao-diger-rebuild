@@ -16,9 +16,10 @@ default_task = "publish"
 def set_properties(project):
     project.set_property("coverage_break_build", False)
     project.name = "codemao-diger-rebuild"
-    project.version = "2.0.0r3"
+    project.version = "2.0.1.dev0"
     project.url = "https://github.com/Rov-Waff/codemao-diger-rebuild"
     project.license = "MIT License"
     project.description = open("README.md").read()
     project.set_property("distutils_readme_format", "text/markdown")
     project.depends_on('requests>=2.32')
+    project.depends_on('pyecharts>=2.0.0')

@@ -25,9 +25,19 @@ class PostMapper:
         else:
             return True
         
+    def getAllUserID(self):
+        self.cursor.execute("SELECT (user_id) from posts")
+        return self.cursor.fetchall()
         
+    def getUsernameById(self,id):
+        self.cursor.execute("SELECT (user_nickname) from posts where user_id=?",(id,))
+        res=self.cursor.fetchall()
+        if res==[]:
+            return None
+        else:
+            return(res[0][0])
+
 if __name__=="__main__":
-    postMapper = PostMapper("db/data.db")
-    postMapper.addPost(1,'test','test',1,'test',1,'test',1,1,1)
-    print(postMapper.getAll())
-    print(postMapper.isPostExistById(1))
+    postMapper = PostMapper("/home/seterain3913/文档/codemao-diger-rebuild/db/data.db")
+    print(postMapper.getAllUserID())
+    print(postMapper.getUsernameById(1))
