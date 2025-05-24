@@ -35,9 +35,9 @@ class PostMapper:
         if res==[]:
             return None
         else:
-            return(res[0])
+            return(res[0][0])
 
 if __name__=="__main__":
-    postMapper = PostMapper("db/data.db")
+    postMapper = PostMapper("/home/seterain3913/文档/codemao-diger-rebuild/db/data.db")
     print(postMapper.getAllUserID())
     print(postMapper.getUsernameById(1))
