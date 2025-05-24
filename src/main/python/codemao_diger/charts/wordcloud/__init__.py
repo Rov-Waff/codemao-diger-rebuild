@@ -34,7 +34,3 @@ class HotWordCloud(WordCloud):
         self.genWordPair()
         super().add(series_name='热词统计',data_pair=self.word_pair)
         super().render(self.output_file)
-        
-if __name__=='__main__':
-    hotWordCloud=HotWordCloud("/home/seterain3913/文档/codemao-diger-rebuild/db/data.db","/home/seterain3913/文档/codemao-diger-rebuild/db/render.html")
-    hotWordCloud.render()
