@@ -24,4 +24,4 @@ def set_properties(project):
     project.depends_on('requests>=2.32')
     project.depends_on('pyecharts>=2.0.0')
     project.depends_on('jieba>=0.40')
-    project.depends_on('bs4>=4.13')
+    project.depends_on('bs4')
