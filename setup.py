@@ -87,9 +87,4 @@ try:
     subprocess.check_call([sys.executable, "setup.py"] + setup_args, cwd=script_dir)
 except subprocess.CalledProcessError as e:
     exit_code = e.returncode
-setup(
-    name='codemao-diger',
-    packages=['codemao-diger'],
-    package_data={'':['__main__.py']},
-)
 sys.exit(exit_code)

@@ -1,6 +1,5 @@
 import requests,json
-from codemao_diger.DBMapper import PostMapper,NoExistPostsMapper
-from codemao_diger.entity.PostEntity import PostEntity
+from .entity.PostEntity import PostEntity
 
 class Requester:
     def __init__(self,url,db_path):

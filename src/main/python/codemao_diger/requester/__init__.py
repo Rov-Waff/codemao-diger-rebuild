@@ -1,6 +1,6 @@
 from .Requester import Requester
-from .DBMapper.NoExistPostsMapper import NoExistPostsMapper
-from .DBMapper.PostMapper import PostMapper
+from ..DBMapper.NoExistPostsMapper import NoExistPostsMapper
+from ..DBMapper.PostMapper import PostMapper
 import logging
 import time
 
