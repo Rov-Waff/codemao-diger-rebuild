@@ -26,11 +26,11 @@ class PostMapper:
             return True
         
     def getAllUserID(self):
-        self.cursor.execute("SELECT (user_id) from posts")
+        self.cursor.execute("SELECT user_id from posts")
         return self.cursor.fetchall()
         
     def getUsernameById(self,id):
-        self.cursor.execute("SELECT (user_nickname) from posts where user_id=?",(id,))
+        self.cursor.execute("SELECT user_nickname from posts where user_id=?",(id,))
         res=self.cursor.fetchall()
         if res==[]:
             return None
@@ -38,9 +38,9 @@ class PostMapper:
             return(res[0][0])
         
     def getAllBoardName(self):
-        self.cursor.execute("SELECT (board_name) from posts")
+        self.cursor.execute("SELECT board_name from posts")
         return self.cursor.fetchall()
 
     def getAllTitleAndContent(self):
-        self.cursor.execute("SELECT (title,content) from posts")
+        self.cursor.execute("SELECT title,content from posts")
         return self.cursor.fetchall()
