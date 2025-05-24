@@ -41,3 +41,6 @@ class PostMapper:
         self.cursor.execute("SELECT (board_name) from posts")
         return self.cursor.fetchall()
 
+    def getAllTitleAndContent(self):
+        self.cursor.execute("SELECT (title,content) from posts")
+        return self.cursor.fetchall()
