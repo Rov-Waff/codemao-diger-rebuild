@@ -1,2 +1,0 @@
-CREATE TABLE IF NOT EXISTS posts(id INT PRIMARY KEY,title TEXT,content TEXT,user_id TEXT,user_nickname TEXT,board_id INT,board_name TEXT,n_views INT,n_replies INT,n_comments INT);
-CREATE TABLE IF NOT EXISTS noExistPosts(id INT PRIMARY KEY);
